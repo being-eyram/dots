@@ -6,6 +6,8 @@ plugins {
     kotlin("jvm") version "1.9.22"
     id("io.ktor.plugin") version "2.3.8"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
+    id("it.nicolasfarabegoli.conventional-commits") version "3.1.3"
+
 }
 
 group = "io.eyram"
@@ -15,12 +17,15 @@ application {
     mainClass.set("io.eyram.ApplicationKt")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 
-    val isDevelopment: Boolean = project.ext.has("development")
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
 repositories {
     mavenCentral()
+}
+
+conventionalCommits{
+    types += listOf()
+    failureMessage = "The commit message does not conform to conventional commits specifications"
 }
 
 dependencies {
